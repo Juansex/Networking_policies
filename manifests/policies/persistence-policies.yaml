@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: database-ingress-policy
+  namespace: persistence
+spec:
+  podSelector:
+    matchLabels:
+      component: database
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          tier: business
+      podSelector:
+        matchLabels:
+          component: api
+    ports:
+    - protocol: TCP
+      port: 5432
+  egress: []

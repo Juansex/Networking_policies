@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: presentation
+  labels:
+    tier: presentation
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: business
+  labels:
+    tier: business
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: persistence
+  labels:
+    tier: persistence
